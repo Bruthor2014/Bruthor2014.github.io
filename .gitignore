@@ -1,0 +1,10 @@
+# ficheiros antigos que o site não usa
+styles-new.css
+assets/premium_photo-1723983556172-ee1932896694.avif
+assets/ruben_mini_original_backup.png
+
+# testes / temporários
+_dbg*.html
+_mob.html
+.DS_Store
+Thumbs.db

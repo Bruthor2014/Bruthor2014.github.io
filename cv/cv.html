@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--
+  Modelo do CV em PDF.
+  Para gerar os PDFs de novo (depois de alterares o texto), corre na pasta do projeto:
+    powershell -File cv/gerar-pdf.ps1
+-->
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV Rúben Correia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: #1d1b22;
+      font-size: 9.6pt;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+    header {
+      background: #14101f;
+      color: #fff;
+      padding: 11mm 14mm 9mm;
+      position: relative;
+      display: grid;
+      grid-template-columns: 34mm 1fr;
+      gap: 8mm;
+      align-items: center;
+    }
+    .photo {
+      width: 34mm;
+      height: 40mm;
+      border-radius: 2mm;
+      border: 0.7mm solid #ffb100;
+      background: url('../assets/ruben-foto.jpg') center 22% / 165% auto no-repeat;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 2.2mm;
+      background: linear-gradient(90deg, #ffb100, #ff5b3d 50%, #ff3df2);
+    }
+    h1 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 900;
+      font-size: 25pt;
+      letter-spacing: 0.06em;
+    }
+    .role {
+      margin: 1mm 0 5mm;
+      font-size: 12pt;
+      font-weight: 600;
+      color: #ffb100;
+      letter-spacing: 0.04em;
+    }
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6mm 6mm;
+      font-size: 8.8pt;
+      color: #e6e1ee;
+    }
+    .contacts a { color: inherit; text-decoration: none; }
+    .contacts b { color: #ffb100; font-weight: 700; margin-right: 1.2mm; }
+
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 58mm;
+      gap: 8mm;
+      padding: 8mm 14mm 10mm;
+    }
+    section { margin-bottom: 5.5mm; }
+    h2 {
+      margin: 0 0 2.6mm;
+      font-family: "Orbitron", sans-serif;
+      font-size: 9.4pt;
+      letter-spacing: 0.16em;
+      color: #14101f;
+      padding-bottom: 1.4mm;
+      border-bottom: 0.5mm solid #ffb100;
+    }
+    p { margin: 0 0 2mm; }
+    .item { margin-bottom: 3.6mm; }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 4mm;
+    }
+    .item h3 { margin: 0; font-size: 10.2pt; font-weight: 700; }
+    .date { font-size: 8.4pt; color: #7a7286; white-space: nowrap; font-weight: 500; }
+    .place { color: #c2410c; font-weight: 600; font-size: 9pt; }
+    .place a { color: inherit; }
+    ul { margin: 1.4mm 0 0; padding-left: 4.4mm; }
+    li { margin-bottom: 0.8mm; }
+
+    aside .group { margin-bottom: 3.4mm; }
+    aside .label {
+      font-size: 7.6pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #7a7286;
+      margin-bottom: 1.4mm;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+    .chips span {
+      padding: 0.7mm 2.2mm;
+      border: 0.3mm solid #e2dcea;
+      background: #f6f3fa;
+      border-radius: 1mm;
+      font-size: 8.4pt;
+      font-weight: 500;
+    }
+    .skill { display: grid; grid-template-columns: 1fr auto; align-items: center; margin-bottom: 1.6mm; font-size: 8.8pt; font-weight: 600; }
+    .dots { display: flex; gap: 0.9mm; }
+    .dots i { width: 2.6mm; height: 2.6mm; border-radius: 50%; background: #e2dcea; }
+    .dots i.on { background: #ffb100; }
+    .soft li { margin-bottom: 1.2mm; }
+
+    [data-lang] { display: none; }
+    body.pt [data-lang="pt"], body.en [data-lang="en"] { display: revert; }
+  </style>
+</head>
+<body class="pt">
+  <div class="page">
+    <header>
+      <div class="photo" role="img" aria-label="Rúben Correia"></div>
+      <div>
+      <h1>RÚBEN CORREIA</h1>
+      <p class="role">Fullstack Developer</p>
+      <div class="contacts">
+        <span><b data-lang="pt">LOCAL</b><b data-lang="en">LOCATION</b>Leiria, Portugal</span>
+        <span><b>EMAIL</b><a href="mailto:ruben.francisco.correia2003@gmail.com">ruben.francisco.correia2003@gmail.com</a></span>
+        <span><b data-lang="pt">TEL</b><b data-lang="en">PHONE</b><a href="tel:+351918262428">+351 918 262 428</a></span>
+        <span><b>LINKEDIN</b><a href="https://www.linkedin.com/in/r%C3%BAben-correia-4469a825b">linkedin.com/in/rúben-correia-4469a825b</a></span>
+        <span><b>GITHUB</b><a href="https://github.com/Bruthor2014">github.com/Bruthor2014</a></span>
+      </div>
+      </div>
+    </header>
+
+    <div class="body">
+      <main>
+        <section>
+          <h2 data-lang="pt">PERFIL</h2><h2 data-lang="en">PROFILE</h2>
+          <p data-lang="pt">Estudante de Engenharia Informática na Universidade de Leiria e Oeste, a programar desde os 15 anos. Desenvolvo aplicações completas de ponta a ponta, com foco em backend (Node.js, Express, PostgreSQL) e frontend em React. Tenho experiência de estágio como técnico de informática e fiz mobilidade Erasmus+ em Zagreb. Procuro a minha primeira oportunidade profissional como developer.</p>
+          <p data-lang="en">Computer Engineering student at the University of Leiria and Oeste, coding since age 15. I build complete applications end to end, focused on the backend (Node.js, Express, PostgreSQL) with React on the frontend. I have internship experience as an IT technician and completed an Erasmus+ mobility in Zagreb. I'm looking for my first professional opportunity as a developer.</p>
+        </section>
+
+        <section>
+          <h2 data-lang="pt">PROJETOS</h2><h2 data-lang="en">PROJECTS</h2>
+          <div class="item">
+            <div class="item-head">
+              <h3>Ironbound</h3>
+              <span class="date">Node.js · Express · PostgreSQL · React · Docker</span>
+            </div>
+            <div class="place"><a href="https://ironbound.pt">ironbound.pt</a> · <a href="https://github.com/Bruthor2014/workout-tracker">github.com/Bruthor2014/workout-tracker</a></div>
+            <ul data-lang="pt">
+              <li>Plataforma multi-ginásio para gestão de treinos, nutrição e composição corporal, com dashboards e gráficos de evolução.</li>
+              <li>Seis perfis de utilizador (membro, PT, nutricionista, rececionista, dono, admin) com autorização por função e verificação de propriedade.</li>
+              <li>Autenticação JWT com bcrypt, SQL parametrizado e transações (BEGIN/COMMIT/ROLLBACK) em escritas multi-tabela.</li>
+              <li>Frontend em React 19 + Vite com design system próprio, também disponível como app Android (Capacitor).</li>
+            </ul>
+            <ul data-lang="en">
+              <li>Multi-gym platform for managing workouts, nutrition and body composition, with dashboards and progress charts.</li>
+              <li>Six user roles (member, trainer, nutritionist, receptionist, owner, admin) with role-based authorization and ownership checks.</li>
+              <li>JWT authentication with bcrypt, parameterized SQL and transactions (BEGIN/COMMIT/ROLLBACK) for multi-table writes.</li>
+              <li>React 19 + Vite frontend with a custom design system, also shipped as an Android app (Capacitor).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-lang="pt">EXPERIÊNCIA</h2><h2 data-lang="en">EXPERIENCE</h2>
+          <div class="item">
+            <div class="item-head">
+              <h3 data-lang="pt">Técnico de Palco</h3>
+              <h3 data-lang="en">Stage Technician</h3>
+              <span class="date" data-lang="pt">Jun – Set 2025</span>
+              <span class="date" data-lang="en">Jun – Sep 2025</span>
+            </div>
+            <div class="place" data-lang="pt">Concertos de David Carreira e Nemanus</div>
+            <div class="place" data-lang="en">Concerts for David Carreira and Nemanus</div>
+            <p data-lang="pt" style="margin-top:1mm">Montagem e apoio técnico em espetáculos ao vivo, em equipa e sob prazos apertados.</p>
+            <p data-lang="en" style="margin-top:1mm">Setup and technical support at live shows, working as a team under tight deadlines.</p>
+          </div>
+          <div class="item">
+            <div class="item-head">
+              <h3 data-lang="pt">Estagiário · Técnico de Informática</h3>
+              <h3 data-lang="en">Intern · IT Technician</h3>
+              <span class="date" data-lang="pt">Fev – Jun 2021 · Out – Dez 2021</span>
+              <span class="date" data-lang="en">Feb – Jun 2021 · Oct – Dec 2021</span>
+            </div>
+            <div class="place">Instituto Politécnico de Santarém</div>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-lang="pt">FORMAÇÃO</h2><h2 data-lang="en">EDUCATION</h2>
+          <div class="item">
+            <div class="item-head">
+              <h3 data-lang="pt">Licenciatura em Engenharia Informática</h3>
+              <h3 data-lang="en">BSc in Computer Engineering</h3>
+              <span class="date" data-lang="pt">2022 – Atualidade</span>
+              <span class="date" data-lang="en">2022 – Present</span>
+            </div>
+            <div class="place">Universidade de Leiria e Oeste</div>
+          </div>
+          <div class="item">
+            <div class="item-head">
+              <h3 data-lang="pt">Mobilidade Erasmus+</h3>
+              <h3 data-lang="en">Erasmus+ Mobility</h3>
+              <span class="date" data-lang="pt">Out 2025 – Fev 2026</span>
+              <span class="date" data-lang="en">Oct 2025 – Feb 2026</span>
+            </div>
+            <div class="place" data-lang="pt">TVZ · Zagreb University of Applied Sciences, Croácia</div>
+            <div class="place" data-lang="en">TVZ · Zagreb University of Applied Sciences, Croatia</div>
+          </div>
+          <div class="item">
+            <div class="item-head">
+              <h3 data-lang="pt">Curso Profissional de Sistemas de Informática</h3>
+              <h3 data-lang="en">Vocational Course in IT Systems</h3>
+              <span class="date" data-lang="pt">10.º – 12.º ano</span>
+              <span class="date" data-lang="en">Grades 10 – 12</span>
+            </div>
+            <div class="place">Escola Secundária Dr. Ginestal Machado, Santarém</div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <section>
+          <h2 data-lang="pt">COMPETÊNCIAS</h2><h2 data-lang="en">SKILLS</h2>
+          <div class="skill">Frontend <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill">Backend <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill"><span data-lang="pt">Bases de dados</span><span data-lang="en">Databases</span> <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill">APIs <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+          <div class="skill">UI/UX <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+          <div class="skill">DevOps <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+        </section>
+
+        <section>
+          <h2>TECH STACK</h2>
+          <div class="group">
+            <div class="label" data-lang="pt">LINGUAGENS</div><div class="label" data-lang="en">LANGUAGES</div>
+            <div class="chips"><span>JavaScript</span><span>TypeScript</span><span>HTML</span><span>CSS</span><span>PHP</span><span>SQL</span><span>Python</span><span>C#</span><span>C</span><span>C++</span></div>
+          </div>
+          <div class="group">
+            <div class="label">FRAMEWORKS</div>
+            <div class="chips"><span>Node.js</span><span>Express</span><span>React</span><span>Next.js</span><span>Capacitor</span></div>
+          </div>
+          <div class="group">
+            <div class="label" data-lang="pt">BASES DE DADOS</div><div class="label" data-lang="en">DATABASES</div>
+            <div class="chips"><span>PostgreSQL</span><span>Supabase</span></div>
+          </div>
+          <div class="group">
+            <div class="label" data-lang="pt">FERRAMENTAS</div><div class="label" data-lang="en">TOOLS</div>
+            <div class="chips"><span>Git</span><span>GitHub</span><span>Docker</span><span>Claude Code</span><span>Vercel</span><span>VS Code</span></div>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-lang="pt">SOFT SKILLS</h2><h2 data-lang="en">SOFT SKILLS</h2>
+          <ul class="soft" data-lang="pt">
+            <li>Autodidata e curioso</li>
+            <li>Trabalho em equipa</li>
+            <li>Resolução de problemas sob pressão</li>
+            <li>Adaptação a contextos internacionais</li>
+          </ul>
+          <ul class="soft" data-lang="en">
+            <li>Self-taught and curious</li>
+            <li>Teamwork</li>
+            <li>Problem solving under pressure</li>
+            <li>Adaptable to international settings</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+  <script>
+    if (location.hash === '#en') {
+      document.body.className = 'en';
+      document.documentElement.lang = 'en';
+    }
+  </script>
+</body>
+</html>
